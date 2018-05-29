@@ -1,0 +1,199 @@
+<!-- <p>
+    <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+      Toggle
+    </button>
+  </p>
+  <div id="collapseExample" [ngbCollapse]="isCollapsed">
+    <div class="card">
+      <div class="card-body">
+        You can collapse this card by clicking Toggle
+      </div>
+    </div>
+  </div> -->
+  
+  <!-- NEW ADDITION FOR EVENT BUBBLE PUB SUB TYPE BEGINS-->
+
+  <aside>
+    <nav  role="navigation" style="padding-left:0px;">
+  
+      <div class="nav-side-menu" id="heading" [ngbCollapse]="isCollapsed">
+        <div class="brand">
+          <img src="../../assets/BrandLogo.png">
+        </div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div *ngIf="items">
+          <div class="menu-list" *ngFor='let result of items'>
+  
+  
+            <ul id="menu-content" class="menu-content collapse out" >
+  
+              <li *ngIf="result.categories.length==0" >
+                <a  (click)="fireEvent2(result.name)">
+                  {{result.name}}
+                </a>
+              </li>
+  
+              <li *ngIf="result.categories.length>0">
+                <app-collapse [arrdata]="result.categories" [heading]="result.name" [category]="key" ></app-collapse>
+              </li>
+  
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  
+  </aside> 
+
+  <!-- EVENT BUBBLE PUB SUB ENDS -->
+  
+  
+  <!-- <pre>                                                      
+<button (click)="Collapse(isCollapsed)" [attr.aria-expanded]="this.isCollapsed" aria-controls="heading" >&#9776; open</button>
+  </pre> -->
+                                                       <!-- <aside>
+    <nav  role="navigation" style="padding-left:0px;"> -->
+      <!-- class="navbar navbar-inverse sidebar navbar-fixed-top" -->
+
+      <!-- <div class="nav-side-menu" id="heading" [ngbCollapse]="isCollapsed"> -->
+        <!-- <div class="brand">
+          <img src="../../assets/BrandLogo.png">
+        </div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div *ngIf="items">
+          <div class="menu-list" *ngFor='let result of items'>
+
+
+            <ul id="menu-content" class="menu-content collapse out" >
+
+              <li *ngIf="result.categories.length==0" >
+                <a  (click)="fireEvent2(result.name)">
+                  {{result.name}}
+                </a>
+              </li> -->
+              
+              <!-- <li *ngIf="result.categories.length>0"  >
+
+                <a  (click)="Collapse(isCollapsed)"
+                [attr.aria-expanded]="this.isCollapsed" aria-controls="result.name" (click)="fireEvent2(result.name)">
+                  {{result.name}}
+                  <span class="arrow"></span>
+                </a>
+                <section id="result.name" [ngbCollapse]="isCollapsed">
+                      <app-recursive [result]="result.categories" [categories]="key" (recursiveEvent)="fireEvent2($event)" ></app-recursive>
+                </section> 
+              </li> -->
+              <!-- <li *ngIf="result.categories.length>0"> -->
+                  <!-- <a (click)="fireEvent2(result.name)">{{result.name}}<span class="arrow"></span></a> -->
+                <!-- <app-collapse [arrdata]="result.categories" [heading]="result.name" [category]="key" (collapseEvent)="fireEvent2($event)" ></app-collapse>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </aside> -->
+
+
+
+
+
+  <!-- <aside>
+    <nav class="navbar navbar-inverse sidebar navbar-fixed-top" role="navigation">
+
+
+      <div class="nav-side-menu">
+        <div class="brand">
+          <img src="../assets/BrandLogo.png">
+        </div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div *ngIf="items">
+          <div class="menu-list" *ngFor='let result of items'>
+
+
+            <ul id="menu-content" class="menu-content collapse out">
+
+              <li *ngIf="result.categories.length==0">
+                <a href="#">
+                  {{result.name}}
+                </a>
+              </li>
+              <li *ngIf="result.categories.length>0" data-toggle="collapse" [attr.data-target]="'#' +result.name">
+                <a href="#">
+                  {{result.name}}
+                  <span class="arrow"></span>
+                </a>
+
+              </li>
+              <ul class="sub-menu collapse " [attr.id]="result.name">
+                  <li>
+                    <app-recursive [result]="result.categories" [categories]="submenu"></app-recursive>
+                  </li>
+                </ul>
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </aside>
+
+    <div class="main">
+    </div> -->
+
+  <!-- <aside>
+      <nav class="navbar navbar-inverse sidebar navbar-fixed-top" role="navigation">
+
+
+        <div class="nav-side-menu">
+          <div class="brand">
+            <img src="../assets/BrandLogo.png">
+          </div>
+          <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+          <div *ngIf="items">
+          <div class="menu-list" *ngFor='let result of items'>
+
+
+            <ul id="menu-content" class="menu-content collapse out">
+
+              <li *ngIf="result.categories.length==0">
+                <a href="#">
+                  {{result.name}}
+                </a>
+              </li>
+
+              <li *ngIf="result.categories.length>0" data-toggle="collapse" [attr.data-target]="'#' +result.name" >
+                <a href="#">
+                  {{result.name}}
+                  <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu collapse " [attr.id]="result.name">
+
+                  <li *ngFor='let res of result.categories'>
+                    <a href="#">{{res.name}}</a>
+
+
+                  </li>
+                  <app-uitree *ngIf="result[key].length" [key]="key" [data]="result[key]" ></app-uitree>
+                </ul>
+
+
+              </li>
+
+            </ul>
+          </div>
+          </div>
+        </div>
+      </nav>
+
+    </aside>
+
+
+
+    <div class="main">
+    </div> -->

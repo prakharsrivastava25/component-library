@@ -1,0 +1,64 @@
+<!-- The content below is only a placeholder and can be replaced.
+<div class="container">
+  <app-av-nav-bar (isToggled)="toggle($event)">
+    <app-av-nav-group>
+      <app-av-nav-item *ngIf="menuControlValue">
+      </app-av-nav-item>
+    </app-av-nav-group>
+  </app-av-nav-bar>
+
+
+  <app-header>first header</app-header>
+  <app-dv-button></app-dv-button>
+</div>
+
+<div>
+  <app-av-form-structure>
+    <app-av-label
+    *ngFor= "let labelElement of labelProperty"
+    [labelProperty]= "labelElement">
+    </app-av-label>
+
+    <app-av-input
+    *ngFor="let label of inputLabelProperty"
+    [inputProperty]="label">
+    </app-av-input>
+
+    <app-av-textarea
+      *ngFor = "let textAreaElement of textAreaProperty"
+      [textAreaProperty]= "textAreaElement">
+    </app-av-textarea>
+
+    <app-av-radio-button
+    *ngFor="let rbEle of radioBtnProp"
+    [radioBtnProp]="rbEle"
+    ></app-av-radio-button>
+
+    <app-av-checkboxes
+    *ngFor="let cbEle of checkboxProp"
+    [checkboxProp]="cbEle"
+    ></app-av-checkboxes>
+
+  </app-av-form-structure>
+</div> -->
+
+<!-- <app-av-sidebar></app-av-sidebar> -->
+<app-av-nav-bar></app-av-nav-bar>
+<br>
+<br>
+<br>
+
+<app-av-card (cardInitiated)= "cardPropRecieved($event)"
+(cardButtonClicked) = "cardValueChange($event)"
+[cardProperties]="cardPropertiesOne">
+</app-av-card>
+<br>
+<app-av-card (cardInitiated)= "cardPropRecieved($event)"
+[cardProperties]="cardPropertiesTwo">
+</app-av-card>
+
+
+<!-- <app-av-dynamic-form  style="height: 100%;"></app-av-dynamic-form> -->
+
+<!-- <app-av-nav-bar></app-av-nav-bar> -->
+

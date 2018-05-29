@@ -1,0 +1,46 @@
+
+
+        <div *ngIf="result.length" class ="random">
+          <div class="menu-list" *ngFor="let item of result">
+
+            <ul >
+
+              <li *ngIf="item.categories.length==0" >
+                <a  (click)="fireEvent(item.name)">
+                  {{item.name}}
+                </a>
+              </li>
+              <li *ngIf="item.categories.length>0"  [attr.data-target]="'#' +item.name" (click)="isCollapsed = !isCollapsed"
+                  [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                  <a  (click)="fireEvent(item.name)">
+                      <!-- (click)="check(item.name,item.categories.length)" -->
+                    {{item.name}}</a><span class="arrow" ></span>
+                    <i class="fas fa-plus" style="padding-left: 2%; padding-bottom: 1%; height:5%;width:5%;font-family: FontAwesome;
+                    content: \f067;"></i>
+
+
+                  </li>
+
+                  <section class="sub-menu collapse " [attr.id]="item.name" id="collapseExample" [ngbCollapse]="isCollapsed">
+
+                      <app-recursive *ngIf="item[key].length" [categories]="key" [result]="item[key]" (recursiveEvent)="fireEvent($event)"></app-recursive>
+
+                  </section>
+            </ul>
+          </div>
+          </div>
+
+
+
+  <!-- <aside>
+      <nav >
+        <ul *ngIf="result.length" class="navbar-side" id="navbarSide">
+          <li *ngFor="let item of result" class="navbar-side-item">
+            <a href="#" class="side-link" >
+            {{item.name}}</a>
+            <app-recursive *ngIf="item[key].length" [categories]="key" [result]="item[key]" ></app-recursive>
+
+          </li>
+        </ul>
+      </nav>
+    </aside> -->

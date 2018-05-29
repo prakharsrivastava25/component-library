@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-xs fixed-top" style="background-color: #ee534f;">
+        <button *ngIf="menuBar"
+        class="btn btn-link" style="color: white;" (click)="Collapse(isCollapsed)" [attr.aria-expanded]="this.isCollapsed" aria-controls="collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <ng-content></ng-content>
+      </nav>
+      <section id="collapse" [ngbCollapse]="isCollapsed">
+      <app-av-sidebar [inputData]="someData" [inputKey]="someKey" (navbarEvent)="fireEvent5($event)" ></app-av-sidebar>
+      <!-- <app-av-sidebar (navbarEvent)="fireEvent5($event)" ></app-av-sidebar> -->
+    </section>
+      

@@ -1,0 +1,50 @@
+<!-- Event PubSub type Begins -->
+<a (click)="Collapse(isCollapsed)" [attr.aria-expanded]="this.isCollapsed" aria-controls="heading" (click)="fireEventy(heading)" x>
+    {{heading}}<i *ngIf="results.length>0" class="fas fa-plus" style="padding-left: 2%; padding-bottom: 1%; height:5%;width:5%;font-family: FontAwesome;
+        content: \f067;"></i>
+  </a>
+  <ul class="menu-list" *ngFor='let result of results'>
+  
+    <li id="heading" [ngbCollapse]="isCollapsed">
+        <app-collapse [arrdata]="result.categories" [heading]="result.name" [category]="key" >
+          <!-- (collapseEvent)="fireEventy($event)" -->
+  
+        </app-collapse>
+  
+    </li>
+  </ul>
+<!-- Event pub sub Ends -->
+
+<!-- <a (click)="Collapse(isCollapsed)" [attr.aria-expanded]="this.isCollapsed" aria-controls="heading" (click)="fireEventy(heading)" x>
+    {{heading}}<i *ngIf="results.length>0" class="fas fa-plus" style="padding-left: 2%; padding-bottom: 1%; height:5%;width:5%;font-family: FontAwesome;
+        content: \f067;"></i>
+  </a>
+<ul class="menu-list" *ngFor='let result of results'>
+
+    <li id="heading" [ngbCollapse]="isCollapsed">
+        <app-collapse [arrdata]="result.categories" [heading]="result.name" [category]="key" (collapseEvent)="fireEventy($event)"></app-collapse>
+
+    </li>
+</ul> -->
+      <!-- <section >
+          <app-recursive  [result]="result.categories" [categories]="key" (recursiveEvent)="fireEventy($event)"></app-recursive>
+      </section> -->
+  
+<!-- <div *ngIf="heading">
+
+    <div class="menu-list" *ngFor='let result of results'>
+
+
+
+      <div *ngIf="result.categories.length>0">
+       
+        <a (click)="Collapse(isCollapsed)" [attr.aria-expanded]="this.isCollapsed" aria-controls="result.name" (click)="fireEventy(result.name)">
+                  {{heading}}
+                  <span class="arrow"></span>
+                </a>
+        <section id="result.name" [ngbCollapse]="isCollapsed">
+            <app-recursive [result]="result.categories" [categories]="key" (recursiveEvent)="fireEventy($event)"></app-recursive>
+        </section>
+      </div>
+    </div>
+</div> -->
